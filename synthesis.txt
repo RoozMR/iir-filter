@@ -1,0 +1,545 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> Reading design: IIR_filter.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "IIR_filter.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "IIR_filter"
+Output Format                      : NGC
+Target Device                      : xc3s400-5-pq208
+
+---- Source Options
+Top Module Name                    : IIR_filter
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <IIR_filter> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <DelayerFlipFlop> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <Multiplier> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <IIR_filter> in library <work> (Architecture <behavioral>).
+Entity <IIR_filter> analyzed. Unit <IIR_filter> generated.
+
+Analyzing Entity <DelayerFlipFlop> in library <work> (Architecture <behavioral>).
+Entity <DelayerFlipFlop> analyzed. Unit <DelayerFlipFlop> generated.
+
+Analyzing Entity <Multiplier> in library <work> (Architecture <behavioral>).
+Entity <Multiplier> analyzed. Unit <Multiplier> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <DelayerFlipFlop>.
+    Related source file is "E:/ISE Projects/IRR-Filter/DelayerFlipFlop.vhd".
+    Found 26-bit register for signal <temp>.
+    Summary:
+	inferred  26 D-type flip-flop(s).
+Unit <DelayerFlipFlop> synthesized.
+
+
+Synthesizing Unit <Multiplier>.
+    Related source file is "E:/ISE Projects/IRR-Filter/Multiplier.vhd".
+    Found 12x10-bit multiplier for signal <result>.
+    Summary:
+	inferred   1 Multiplier(s).
+Unit <Multiplier> synthesized.
+
+
+Synthesizing Unit <IIR_filter>.
+    Related source file is "E:/ISE Projects/IRR-Filter/IIR-FILTER.vhd".
+WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1781 - Signal <b_coef> is used but never assigned. Tied to default value.
+WARNING:Xst:653 - Signal <accumulator<0>> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000.
+WARNING:Xst:1781 - Signal <a_coef> is used but never assigned. Tied to default value.
+    Found 26-bit adder for signal <acc0>.
+    Found 26-bit adder for signal <accumulator<1:10>>.
+    Found 22-bit adder for signal <accumulator_1$add0000> created at line 143.
+    Found 22-bit adder for signal <accumulator_10$add0000> created at line 134.
+    Found 22-bit adder for signal <accumulator_2$add0000> created at line 142.
+    Found 22-bit adder for signal <accumulator_3$add0000> created at line 141.
+    Found 22-bit adder for signal <accumulator_4$add0000> created at line 140.
+    Found 22-bit adder for signal <accumulator_5$add0000> created at line 139.
+    Found 22-bit adder for signal <accumulator_6$add0000> created at line 138.
+    Found 22-bit adder for signal <accumulator_7$add0000> created at line 137.
+    Found 22-bit adder for signal <accumulator_8$add0000> created at line 136.
+    Found 22-bit adder for signal <accumulator_9$add0000> created at line 135.
+    Summary:
+	inferred  21 Adder/Subtractor(s).
+Unit <IIR_filter> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 21
+ 12x10-bit multiplier                                  : 21
+# Adders/Subtractors                                   : 21
+ 22-bit adder                                          : 10
+ 26-bit adder                                          : 11
+# Registers                                            : 11
+ 26-bit register                                       : 11
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1293 - FF/Latch <temp_25> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_24> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_23> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_22> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_21> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_20> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_19> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_18> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_17> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_16> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_15> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_14> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_13> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_12> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_11> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_10> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_9> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_8> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_7> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_6> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_5> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_4> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_3> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_2> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_1> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <temp_0> has a constant value of 0 in block <generate_register_units[0].REG_u>. This FF/Latch will be trimmed during the optimization process.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 21
+ 12x10-bit multiplier                                  : 21
+# Adders/Subtractors                                   : 21
+ 22-bit adder                                          : 10
+ 26-bit adder                                          : 11
+# Registers                                            : 286
+ Flip-Flops                                            : 286
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1989 - Unit <IIR_filter>: instances <generate_b_multiplier_units[0].MUL_B_u>, <generate_b_multiplier_units[10].MUL_B_u> of unit <Multiplier> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <IIR_filter>: instances <generate_b_multiplier_units[1].MUL_B_u>, <generate_b_multiplier_units[9].MUL_B_u> of unit <Multiplier> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <IIR_filter>: instances <generate_b_multiplier_units[2].MUL_B_u>, <generate_b_multiplier_units[8].MUL_B_u> of unit <Multiplier> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <IIR_filter>: instances <generate_b_multiplier_units[3].MUL_B_u>, <generate_b_multiplier_units[7].MUL_B_u> of unit <Multiplier> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <IIR_filter>: instances <generate_b_multiplier_units[4].MUL_B_u>, <generate_b_multiplier_units[6].MUL_B_u> of unit <Multiplier> are equivalent, second instance is removed
+
+Optimizing unit <IIR_filter> ...
+
+Optimizing unit <DelayerFlipFlop> ...
+WARNING:Xst:1293 - FF/Latch <generate_register_units[0].REG_u/temp_0> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_1> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_2> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_3> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_4> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_5> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_6> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_7> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_8> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_9> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_10> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_11> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_12> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_13> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_14> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_15> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_16> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_17> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_18> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_19> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_20> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_21> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_22> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_23> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_24> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <generate_register_units[0].REG_u/temp_25> has a constant value of 0 in block <IIR_filter>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block IIR_filter, actual ratio is 6.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 260
+ Flip-Flops                                            : 260
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : IIR_filter.ngr
+Top Level Output File Name         : IIR_filter
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 39
+
+Cell Usage :
+# BELS                             : 1598
+#      GND                         : 1
+#      LUT2                        : 260
+#      LUT3                        : 224
+#      MULT_AND                    : 189
+#      MUXCY                       : 439
+#      VCC                         : 1
+#      XORCY                       : 484
+# FlipFlops/Latches                : 260
+#      FDE                         : 260
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 37
+#      IBUF                        : 11
+#      OBUF                        : 26
+# MULTs                            : 14
+#      MULT18X18                   : 14
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s400pq208-5 
+
+ Number of Slices:                      247  out of   3584     6%  
+ Number of Slice Flip Flops:            260  out of   7168     3%  
+ Number of 4 input LUTs:                484  out of   7168     6%  
+ Number of IOs:                          39
+ Number of bonded IOBs:                  38  out of    141    26%  
+ Number of MULT18X18s:                   14  out of     16    87%  
+ Number of GCLKs:                         1  out of      8    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 260   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 14.409ns (Maximum Frequency: 69.399MHz)
+   Minimum input arrival time before clock: 17.782ns
+   Maximum output required time after clock: 10.237ns
+   Maximum combinational path delay: 13.610ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 14.409ns (frequency: 69.399MHz)
+  Total number of paths / destination ports: 3621808 / 234
+-------------------------------------------------------------------------
+Delay:               14.409ns (Levels of Logic = 25)
+  Source:            generate_register_units[1].REG_u/temp_0 (FF)
+  Destination:       generate_register_units[8].REG_u/temp_25 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: generate_register_units[1].REG_u/temp_0 to generate_register_units[8].REG_u/temp_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.626   0.740  generate_register_units[1].REG_u/temp_0 (generate_register_units[1].REG_u/temp_0)
+     LUT3:I2->O            1   0.479   0.000  Madd_acc0_lut<0> (Madd_acc0_lut<0>)
+     MUXCY:S->O            1   0.435   0.000  Madd_acc0_cy<0> (Madd_acc0_cy<0>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<1> (Madd_acc0_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<2> (Madd_acc0_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<3> (Madd_acc0_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<4> (Madd_acc0_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<5> (Madd_acc0_cy<5>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<6> (Madd_acc0_cy<6>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<7> (Madd_acc0_cy<7>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<8> (Madd_acc0_cy<8>)
+     XORCY:CI->O          82   0.786   1.819  Madd_acc0_xor<9> (dout_9_OBUF)
+     MULT18X18:B9->P16     6   3.252   0.912  generate_a_multiplier_units[8].MUL_A_u/Mmult_result (generate_a_multiplier_units[8].MUL_A_u/result<16>)
+     LUT3:I2->O            1   0.479   0.000  Madd_accumulator_8_add0000_lut<16>1 (Madd_accumulator_8_add0000_lut<16>1)
+     MUXCY:S->O            1   0.435   0.000  Madd_accumulator_8_add0000_cy<16> (Madd_accumulator_8_add0000_cy<16>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator_8_add0000_cy<17> (Madd_accumulator_8_add0000_cy<17>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator_8_add0000_cy<18> (Madd_accumulator_8_add0000_cy<18>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator_8_add0000_cy<19> (Madd_accumulator_8_add0000_cy<19>)
+     MUXCY:CI->O           0   0.056   0.000  Madd_accumulator_8_add0000_cy<20> (Madd_accumulator_8_add0000_cy<20>)
+     XORCY:CI->O           5   0.786   0.953  Madd_accumulator_8_add0000_xor<21> (accumulator_8_add0000<21>)
+     LUT2:I1->O            1   0.479   0.000  Madd_accumulator<8>_lut<21> (Madd_accumulator<8>_lut<21>)
+     MUXCY:S->O            1   0.435   0.000  Madd_accumulator<8>_cy<21> (Madd_accumulator<8>_cy<21>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator<8>_cy<22> (Madd_accumulator<8>_cy<22>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator<8>_cy<23> (Madd_accumulator<8>_cy<23>)
+     MUXCY:CI->O           0   0.056   0.000  Madd_accumulator<8>_cy<24> (Madd_accumulator<8>_cy<24>)
+     XORCY:CI->O           1   0.786   0.000  Madd_accumulator<8>_xor<25> (accumulator<8><25>)
+     FDE:D                     0.176          generate_register_units[8].REG_u/temp_25
+    ----------------------------------------
+    Total                     14.409ns (9.987ns logic, 4.423ns route)
+                                       (69.3% logic, 30.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 4828365 / 520
+-------------------------------------------------------------------------
+Offset:              17.782ns (Levels of Logic = 26)
+  Source:            en (PAD)
+  Destination:       generate_register_units[8].REG_u/temp_25 (FF)
+  Destination Clock: clk rising
+
+  Data Path: en to generate_register_units[8].REG_u/temp_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           510   0.715   4.024  en_IBUF (en_IBUF)
+     LUT3:I1->O            1   0.479   0.000  Madd_acc0_lut<0> (Madd_acc0_lut<0>)
+     MUXCY:S->O            1   0.435   0.000  Madd_acc0_cy<0> (Madd_acc0_cy<0>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<1> (Madd_acc0_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<2> (Madd_acc0_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<3> (Madd_acc0_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<4> (Madd_acc0_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<5> (Madd_acc0_cy<5>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<6> (Madd_acc0_cy<6>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<7> (Madd_acc0_cy<7>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<8> (Madd_acc0_cy<8>)
+     XORCY:CI->O          82   0.786   1.819  Madd_acc0_xor<9> (dout_9_OBUF)
+     MULT18X18:B9->P16     6   3.252   0.912  generate_a_multiplier_units[8].MUL_A_u/Mmult_result (generate_a_multiplier_units[8].MUL_A_u/result<16>)
+     LUT3:I2->O            1   0.479   0.000  Madd_accumulator_8_add0000_lut<16>1 (Madd_accumulator_8_add0000_lut<16>1)
+     MUXCY:S->O            1   0.435   0.000  Madd_accumulator_8_add0000_cy<16> (Madd_accumulator_8_add0000_cy<16>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator_8_add0000_cy<17> (Madd_accumulator_8_add0000_cy<17>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator_8_add0000_cy<18> (Madd_accumulator_8_add0000_cy<18>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator_8_add0000_cy<19> (Madd_accumulator_8_add0000_cy<19>)
+     MUXCY:CI->O           0   0.056   0.000  Madd_accumulator_8_add0000_cy<20> (Madd_accumulator_8_add0000_cy<20>)
+     XORCY:CI->O           5   0.786   0.953  Madd_accumulator_8_add0000_xor<21> (accumulator_8_add0000<21>)
+     LUT2:I1->O            1   0.479   0.000  Madd_accumulator<8>_lut<21> (Madd_accumulator<8>_lut<21>)
+     MUXCY:S->O            1   0.435   0.000  Madd_accumulator<8>_cy<21> (Madd_accumulator<8>_cy<21>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator<8>_cy<22> (Madd_accumulator<8>_cy<22>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_accumulator<8>_cy<23> (Madd_accumulator<8>_cy<23>)
+     MUXCY:CI->O           0   0.056   0.000  Madd_accumulator<8>_cy<24> (Madd_accumulator<8>_cy<24>)
+     XORCY:CI->O           1   0.786   0.000  Madd_accumulator<8>_xor<25> (accumulator<8><25>)
+     FDE:D                     0.176          generate_register_units[8].REG_u/temp_25
+    ----------------------------------------
+    Total                     17.782ns (10.075ns logic, 7.707ns route)
+                                       (56.7% logic, 43.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 676 / 26
+-------------------------------------------------------------------------
+Offset:              10.237ns (Levels of Logic = 12)
+  Source:            generate_register_units[1].REG_u/temp_0 (FF)
+  Destination:       dout<9> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: generate_register_units[1].REG_u/temp_0 to dout<9>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.626   0.740  generate_register_units[1].REG_u/temp_0 (generate_register_units[1].REG_u/temp_0)
+     LUT3:I2->O            1   0.479   0.000  Madd_acc0_lut<0> (Madd_acc0_lut<0>)
+     MUXCY:S->O            1   0.435   0.000  Madd_acc0_cy<0> (Madd_acc0_cy<0>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<1> (Madd_acc0_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<2> (Madd_acc0_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<3> (Madd_acc0_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<4> (Madd_acc0_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<5> (Madd_acc0_cy<5>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<6> (Madd_acc0_cy<6>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<7> (Madd_acc0_cy<7>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<8> (Madd_acc0_cy<8>)
+     XORCY:CI->O          82   0.786   1.819  Madd_acc0_xor<9> (dout_9_OBUF)
+     OBUF:I->O                 4.909          dout_9_OBUF (dout<9>)
+    ----------------------------------------
+    Total                     10.237ns (7.679ns logic, 2.558ns route)
+                                       (75.0% logic, 25.0% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 702 / 26
+-------------------------------------------------------------------------
+Delay:               13.610ns (Levels of Logic = 13)
+  Source:            en (PAD)
+  Destination:       dout<9> (PAD)
+
+  Data Path: en to dout<9>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           510   0.715   4.024  en_IBUF (en_IBUF)
+     LUT3:I1->O            1   0.479   0.000  Madd_acc0_lut<0> (Madd_acc0_lut<0>)
+     MUXCY:S->O            1   0.435   0.000  Madd_acc0_cy<0> (Madd_acc0_cy<0>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<1> (Madd_acc0_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<2> (Madd_acc0_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<3> (Madd_acc0_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<4> (Madd_acc0_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<5> (Madd_acc0_cy<5>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<6> (Madd_acc0_cy<6>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<7> (Madd_acc0_cy<7>)
+     MUXCY:CI->O           1   0.056   0.000  Madd_acc0_cy<8> (Madd_acc0_cy<8>)
+     XORCY:CI->O          82   0.786   1.819  Madd_acc0_xor<9> (dout_9_OBUF)
+     OBUF:I->O                 4.909          dout_9_OBUF (dout<9>)
+    ----------------------------------------
+    Total                     13.610ns (7.768ns logic, 5.842ns route)
+                                       (57.1% logic, 42.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.07 secs
+ 
+--> 
+
+Total memory usage is 4521756 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   61 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
