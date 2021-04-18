@@ -30,23 +30,24 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity DelayerFlipFlop is
-	 Generic ( size : integer := 21);
-    Port ( d : in  STD_LOGIC_VECTOR (size-1 downto 0);
-           q : out  STD_LOGIC_VECTOR (size-1 downto 0);
+    Port ( d : in  STD_LOGIC_VECTOR (25 downto 0);
+           q : out  STD_LOGIC_VECTOR (25 downto 0);
            clk : in  STD_LOGIC;
            en : in  STD_LOGIC);
 end DelayerFlipFlop;
 
 architecture Behavioral of DelayerFlipFlop is
-
+signal temp : std_logic_vector (25 downto 0) := (others => '0');
 begin
 	process (clk)
 	begin
-	if (en = '1') then
-		if rising_edge(clk) then
-			q <= d;
+	if rising_edge(clk) then
+		if (en = '1') then
+			temp <= d;
 		end if;
 	end if;
 	end process;
+	
+	q <= temp;
 end Behavioral;
 
